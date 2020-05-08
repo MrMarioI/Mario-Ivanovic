@@ -9,13 +9,12 @@ function start() {
 }
 
 
-function display(quotes) {
+function getQuotes(quotes) {
     list.innerHTML = "";
 
-    pokemons.forEach(pokemon => {
+    quotes.forEach(pokemon => {
         console.log(pokemon);
-        list.innerHTML += `<li class="item"><span>${pokemon.name}</span><br>
-        <button class="btn" data-url="${pokemon.url}">More</button>
+        list.innerHTML += `<button class="btn" data-url="${pokemon.url}">More</button>
         </li>`;
 
     });
