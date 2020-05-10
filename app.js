@@ -1,13 +1,15 @@
 URL = "https://api.whatdoestrumpthink.com/api/v1/quotes";
 
 const list = document.getElementById("quotes");
+//const boxes = document.querySelectorAll('.box');
+
 
 function start() {
     axios
         .get(URL)
         .then(res => {
             console.log(res.data);
-            display(res.data)
+            display(res.data.results)
         })
         .catch((err) => console.error(err))
 }
@@ -40,7 +42,24 @@ function displayMore(evt) {
 
     .catch((err) => console.error(err));
 }
+// function randomBox(boxes) {
+//     const i = Math.floor(Math.random() * boxes.length);
+//     const box = boxes[i];
 
+// }
+
+// function hit(e) {
+// vérification auto de la fiabilité du clic (pour s'assurer qu'il n'a pas été généré en JS)
+//     if (!e.isTrusted) return;
+// si c'est bon on incrémente le score
+//     score++;
+// le virus cliqué redescend dans le nuage
+//     this.parentNode.classList.remove('up');
+// nouveau score incrémenté affiché
+//     scoreBoard.textContent = score;
+// }
+// pour savoir quand un virus est cliqué
+// viruses.forEach(virus => virus.addEventListener('click', hit))
 
 document.getElementById("start").onclick = start;
 

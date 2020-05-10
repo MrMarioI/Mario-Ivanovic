@@ -1,5 +1,18 @@
 // on va chercher les éléments boxes, scoreBoard, viruses dans
 //  leurs nodeList statiques respectives (.box, .virus ...)
+URL = "https://api.whatdoestrumpthink.com/api/v1/quotes";
+
+const list = document.getElementById("quotes");
+
+function start() {
+    axios
+        .get(URL)
+        .then(res => {
+            console.log(res.data);
+            display(res.data.results)
+        })
+        .catch((err) => console.error(err))
+}
 
 const boxes = document.querySelectorAll('.box');
 const scoreBoard = document.querySelector('.score');
@@ -21,17 +34,7 @@ function randomTime(min, max) {
 function randomBox(boxes) {
     const i = Math.floor(Math.random() * boxes.length);
     const box = boxes[i];
-    // floor renvoie le plus grand entier qui est 
-    // inférieur ou égal à un nombre - et ici à (Math.random() * boxes.length).
 
-    // si la même boîte est selectionnée deux fois de suite on relance le processus de sélection
-    if (box === lastBox) {
-        return randomBox(boxes);
-    }
-    // let = lastBox (l.7) + lastBox = Box --> garde en mémoire la dernière boîte 
-    // sélectionnée pour qu'il n'y ai pas de répétitions (lastBox=box le renvoie au if)
-    lastBox = box;
-    return box;
 }
 
 function infect() {
@@ -71,10 +74,10 @@ function hit(e) {
     if (!e.isTrusted) return;
     // si c'est bon on incrémente le score
     score++;
-// le virus cliqué redescend dans le nuage
-    this.parentNode.classList.remove('up'); 
+    // le virus cliqué redescend dans le nuage
+    this.parentNode.classList.remove('up');
     // nouveau score incrémenté affiché
     scoreBoard.textContent = score;
 }
 // pour savoir quand un virus est cliqué
-    viruses.forEach(virus => virus.addEventListener('click', hit))
+viruses.forEach(virus => virus.addEventListener('click', hit))
