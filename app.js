@@ -15,12 +15,19 @@ function start() {
 }
 
 
-function getQuotes(quotes) {
+function display(quotes) {
     list.innerHTML = "";
 
+<<<<<<< HEAD
     quote.forEach(quotes => {
         console.log(quotes);
         list.innerHTML += `<button class="btn" data-url="${quotes.url}">Random</button>
+=======
+    pokemons.forEach(pokemon => {
+        console.log(pokemon);
+        list.innerHTML += `<li class="item"><span>${pokemon.name}</span><br>
+        <button class="btn" data-url="${pokemon.url}">More</button>
+>>>>>>> parent of 76c69cf... new one
         </li>`;
 
     });

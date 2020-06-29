@@ -18,6 +18,8 @@
      "trump10.gif",
      "trumpd.gif",
      "giphy.gif",
+     "trump11.gif",
+     "trump12.gif",
  ];
 
 
